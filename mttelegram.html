@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MT管理器访问Telegram文件目录指南</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #0088cc;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .step {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0088cc;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .step-number {
+            display: inline-block;
+            background-color: #0088cc;
+            color: white;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .note {
+            background-color: #e3f2fd;
+            border-left: 4px solid #0088cc;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .warning {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .path {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            word-break: break-all;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #0088cc;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #006699;
+        }
+        .app-icon {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .screenshot {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><img src="https://img.icons8.com/color/48/000000/telegram-app.png" class="app-icon">MT管理器访问Telegram文件目录指南</h1>
+        
+        <div class="note">
+            <p>Telegram接收的文件默认存储在Android/data目录下，由于系统限制，MT管理器无法直接访问。以下是详细解决方案：</p>
+        </div>
+        
+        <h2>Telegram文件存储位置</h2>
+        <p>Telegram接收的文件主要存储在以下目录：</p>
+        <p class="path">/storage/emulated/0/Android/data/org.telegram.messenger/files/Telegram</p>
+        
+        <p>该目录包含以下子文件夹：</p>
+        <ul>
+            <li><strong>Telegram Audio</strong> - 音频文件</li>
+            <li><strong>Telegram Documents</strong> - 文档文件</li>
+            <li><strong>Telegram Images</strong> - 图片文件</li>
+            <li><strong>Telegram Video</strong> - 视频文件</li>
+        </ul>
+        
+        <h2>方法一：通过MT管理器"文档提供器"访问</h2>
+        <div class="step">
+            <span class="step-number">1</span> 打开MT管理器，点击左上角三横线菜单按钮
+        </div>
+        <div class="step">
+            <span class="step-number">2</span> 选择"添加存储" → "文档提供器"
+        </div>
+        <div class="step">
+            <span class="step-number">3</span> 在列表中找到并选择"Telegram"
+        </div>
+        <div class="step">
+            <span class="step-number">4</span> 导航到 <span class="path">files/Telegram</span> 目录
+        </div>
+        <div class="step">
+            <span class="step-number">5</span> 现在可以访问和管理Telegram文件了
+        </div>
+        
+        <h2>方法二：修改Telegram下载设置</h2>
+        <div class="step">
+            <span class="step-number">1</span> 打开Telegram应用
+        </div>
+        <div class="step">
+            <span class="step-number">2</span> 进入设置 → 数据和存储 → 存储设置
+        </div>
+        <div class="step">
+            <span class="step-number">3</span> 将"保存到画廊"和"保存到下载"选项启用
+        </div>
+        <div class="step">
+            <span class="step-number">4</span> 设置自定义下载目录为易访问的位置，如：
+            <p class="path">/storage/emulated/0/Download/Telegram</p>
+        </div>
+        <div class="step">
+            <span class="step-number">5</span> 之后下载的文件将直接保存到指定目录，MT管理器可直接访问
+        </div>
+        
+        <h2>方法三：使用系统文件管理器复制文件</h2>
+        <div class="step">
+            <span class="step-number">1</span> 使用系统自带文件管理器
+        </div>
+        <div class="step">
+            <span class="step-number">2</span> 导航到 <span class="path">Android/data/org.telegram.messenger/files/Telegram</span>
+        </div>
+        <div class="step">
+            <span class="step-number">3</span> 选择需要的文件，复制到其他目录如Download
+        </div>
+        <div class="step">
+            <span class="step-number">4</span> 然后在MT管理器中访问复制后的文件
+        </div>
+        
+        <div class="warning">
+            <p><strong>注意事项：</strong></p>
+            <ul>
+                <li>Android 11及以上版本对data目录访问限制更严格</li>
+                <li>部分手机厂商的自定义系统可能完全屏蔽data目录访问</li>
+                <li>如果无法访问，可尝试使用ADB命令授权MT管理器访问权限</li>
+                <li>修改系统目录文件可能导致应用异常，请谨慎操作</li>
+            </ul>
+        </div>
+        
+        <h2>高级技巧：使用ADB授权访问权限</h2>
+        <div class="step">
+            <span class="step-number">1</span> 在电脑上安装ADB工具
+        </div>
+        <div class="step">
+            <span class="step-number">2</span> 手机开启USB调试模式
+        </div>
+        <div class="step">
+            <span class="step-number">3</span> 连接电脑后执行以下命令：
+            <p class="path">adb shell pm grant bin.mt.plus android.permission.MANAGE_EXTERNAL_STORAGE</p>
+        </div>
+        <div class="step">
+            <span class="step-number">4</span> 重启MT管理器即可获得完整存储访问权限
+        </div>
+        
+        <center>
+            <a href="https://telegram.org/" class="btn">下载Telegram</a>
+            <a href="https://www.coolapk.com/apk/bin.mt.plus" class="btn">下载MT管理器</a>
+        </center>
+    </div>
+</body>
+</html>

@@ -1,34 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-<meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>博客首页</title>
+    <title>xiaozhong1906 的博客</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* 使用 Inter 字体 */
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* 默认隐藏文章内容区域 */
+        /* 默认隐藏文章内容区域 (保留原有的隐藏样式，尽管在此页面不直接使用) */
         #post-content-area {
             display: none;
         }
     </style>
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-100 text-gray-800 antialiased">
 
-</head>
-<body>
-<h1>xiaozhong1906的博客</h1>
-<p>这里是xiaozhong1906的博客页面点击一个标题查看</p>
+    <div class="container mx-auto p-6 lg:px-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">xiaozhong1906 的博客</h1>
+            <p class="text-xl text-gray-600">这里是 xiaozhong1906 的博客页面，点击标题查看文章详情。</p>
+        </header>
 
-<a href="https://xiaozhong1906.cn/qqwjtq.html">QQ下载文件提取</a>
-    /////
-<a href="https://xiaozhong1906.cn/shizuku.html">shizuku激活
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                <a href="https://xiaozhong1906.cn/qqwjtq.html" class="block">
+                    <h2 class="text-xl font-semibold text-blue-600 hover:text-blue-800 mb-2">QQ下载文件提取</h2>
+                    <p class="text-gray-600 text-sm">了解如何从QQ目录中提取下载的文件。</p>
+                </a>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+                <a href="https://xiaozhong1906.cn/shizuku.html" class="block">
+                    <h2 class="text-xl font-semibold text-blue-600 hover:text-blue-800 mb-2">Shizuku 激活指南</h2>
+                    <p class="text-gray-600 text-sm">通过 ADB 激活 Shizuku 的详细步骤。</p>
+                </a>
+            </div>
+
+            </main>
+
+        <footer class="text-center mt-12 text-gray-500 text-sm">
+            <p>&copy; 2023 xiaozhong1906 的博客. All rights reserved.</p>
+        </footer>
+    </div>
 
 </body>
 </html>

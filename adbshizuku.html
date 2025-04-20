@@ -4,100 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>如何使用ADB启动Shizuku</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* MD3 风格的基础样式 */
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Roboto', sans-serif; /* 使用 Roboto 字体 */
             line-height: 1.6;
+            background-color: #f3edf7; /* MD3 浅紫色背景 */
+            color: #1d1b20; /* MD3 深色文本 */
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px; /* 限制内容最大宽度 */
+            margin: 0 auto; /* 居中显示 */
+            background-color: #fffbfe; /* MD3 浅色容器背景 */
+            padding: 24px; /* 增加内边距 */
+            border-radius: 16px; /* 更大的圆角 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 更明显的阴影 */
         }
         h1 {
-            color: #333;
+            color: #6750a4; /* MD3 主题紫色 */
+            text-align: center; /* 居中 */
+            margin-bottom: 24px; /* 增加底部外边距 */
+            font-weight: 700; /* 加粗标题 */
+        }
+        h2 {
+            color: #49454f; /* MD3 次级文本颜色 */
+            margin-top: 24px; /* 增加顶部外边距 */
+            margin-bottom: 12px; /* 增加底部外边距 */
+            border-bottom: 1px solid #e7e0ec; /* MD3 风格的分割线 */
+            padding-bottom: 8px;
+            font-weight: 500; /* 中等粗细 */
         }
         pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
+            background-color: #e8def8; /* MD3 浅紫色背景 */
+            color: #1d1b20; /* MD3 深色文本 */
+            padding: 16px; /* 增加内边距 */
+            border-radius: 8px; /* 圆角 */
             overflow-x: auto;
+            margin-bottom: 16px;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; /* 等宽字体 */
+            border: 1px solid #d0bcff; /* MD3 风格边框 */
         }
         .step {
-            margin-bottom: 20px;
+            margin-bottom: 32px; /* 增加步骤间距 */
+            padding: 20px; /* 增加内边距 */
+            border: 1px solid #e7e0ec; /* MD3 风格边框 */
+            border-radius: 12px; /* 圆角 */
+            background-color: #fffbfe; /* MD3 浅色背景 */
+        }
+        a {
+            color: #6750a4; /* MD3 主题紫色 */
+            text-decoration: none; /* 无下划线 */
+            font-weight: 500; /* 中等粗细 */
+        }
+        a:hover {
+            text-decoration: underline; /* 鼠标悬停时加下划线 */
         }
         button {
-            padding: 5px 10px;
-            margin-top: 10px;
+            background-color: #6750a4; /* MD3 主题紫色按钮 */
+            color: #fffbfe; /* MD3 浅色文本 */
+            padding: 12px 24px; /* 增加内边距 */
+            border: none;
+            border-radius: 20px; /* 大圆角按钮 */
             cursor: pointer;
+            margin-top: 16px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* 过渡效果 */
+            font-weight: 500; /* 中等粗细 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影 */
+        }
+        button:hover {
+            background-color: #7f67be; /* 鼠标悬停时颜色变亮 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 更明显的阴影 */
+        }
+         button:active {
+            background-color: #9a8cdb; /* 点击时颜色变化 */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* 阴影减小 */
+        }
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 24px; /* 增加左侧内边距 */
+        }
+        li {
+            margin-bottom: 8px;
         }
     </style>
 </head>
 <body>
-    <h1>如何使用ADB启动Shizuku</h1>
-    <p>以下是通过ADB启动Shizuku的详细步骤：</p>
+    <div class="container">
+        <h1>如何使用ADB启动Shizuku</h1>
+        <p>以下是通过ADB启动Shizuku的详细步骤：</p>
 
-    <div class="step">
-        <h2>步骤 1：下载ADB工具</h2>
-        <p>根据你的操作系统，下载对应的ADB工具：</p>
-        <ul>
-            <li><a href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip">Windows版本</a></li>
-            <li><a href="https://dl.google.com/android/repository/platform-tools-latest-darwin.zip">Mac版本</a></li>
-            <li><a href="https://dl.google.com/android/repository/platform-tools-latest-linux.zip">Linux版本</a></li>
-        </ul>
+        <div class="step">
+            <h2>步骤 1：下载ADB工具</h2>
+            <p>根据你的操作系统，下载对应的ADB工具：</p>
+            <ul>
+                <li><a href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip" target="_blank">Windows版本</a></li>
+                <li><a href="https://dl.google.com/android/repository/platform-tools-latest-darwin.zip" target="_blank">Mac版本</a></li>
+                <li><a href="https://dl.google.com/android/repository/platform-tools-latest-linux.zip" target="_blank">Linux版本</a></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h2>步骤 2：配置环境变量</h2>
+            <p>将ADB工具解压到一个目录，例如 <code>C:\Android\platform-tools</code>。</p>
+            <p>然后按照以下步骤配置环境变量：</p>
+            <ol>
+                <li>打开控制面板 > 系统和安全 > 系统 > 高级系统设置。</li>
+                <li>在弹出窗口中选择“环境变量”。</li>
+                <li>在“系统变量”区域，点击“新建”。在“变量名”中输入 <code>ANDROID_HOME</code>，在“变量值”中输入SDK的路径（例如：<code>C:\Android</code>）。</li>
+                <li>在“系统变量”下找到名为 <code>Path</code> 的变量，选择它，然后点击“编辑”。</li>
+                <li>在“编辑环境变量”窗口，点击“新建”，然后添加 <code>%ANDROID_HOME%\platform-tools</code>。</li>
+                <li>点击“确定”保存所有设置。</li>
+            </ol>
+            <p>配置完成后，打开命令提示符，输入以下命令检查ADB是否配置成功：</p>
+            <pre>adb version</pre>
+            <p>如果正确显示版本信息，则表示配置成功。</p>
+        </div>
+
+        <div class="step">
+            <h2>步骤 3：连接设备</h2>
+            <p>确保你的Android设备已连接到电脑，并且已启用开发者选项和USB调试。</p>
+            <p>检查设备是否连接成功：</p>
+            <pre>adb devices</pre>
+            <p>如果设备未显示，请检查USB连接或驱动程序。</p>
+        </div>
+
+        <div class="step">
+            <h2>步骤 4：启动Shizuku</h2>
+            <p>通过ADB启动Shizuku服务，运行以下命令：</p>
+            <pre id="commandToCopy">adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh</pre>
+            <p>如果使用PowerShell、Linux或Mac，命令为：</p>
+            <pre>./adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh</pre>
+            <p>如果遇到权限问题，可以尝试将Shizuku的脚本文件复制到 <code>/data/local/tmp</code> 目录下，并授予执行权限。</p>
+            <button onclick="copyCommand()">一键复制命令</button>
+            <script>
+                function copyCommand() {
+                    const command = document.getElementById('commandToCopy').innerText;
+                    navigator.clipboard.writeText(command).then(() => {
+                        alert('命令已复制到剪贴板！');
+                    }).catch(err => {
+                        console.error('复制失败:', err);
+                    });
+                }
+            </script>
+        </div>
+
+        <div class="step">
+            <h2>步骤 5：检查Shizuku是否启动成功</h2>
+            <p>启动后，你可以通过以下命令检查Shizuku服务是否正在运行：</p>
+            <pre>adb shell ps | grep shizuku</pre>
+            <p>如果看到Shizuku相关的进程，说明启动成功。</p>
+        </div>
+
+        <div class="step">
+            <h2>步骤 6：使用Shizuku</h2>
+            <p>启动Shizuku后，你可以在设备上打开Shizuku应用，或者通过ADB与Shizuku服务进行交互。</p>
+        </div>
+
+        <p>以上是使用ADB启动Shizuku的完整步骤。如果你遇到任何问题，请检查设备和ADB环境是否正确配置。</p>
     </div>
-
-    <div class="step">
-        <h2>步骤 2：配置环境变量</h2>
-        <p>将ADB工具解压到一个目录，例如 `C:\Android\platform-tools`。</p>
-        <p>然后按照以下步骤配置环境变量：</p>
-        <ol>
-            <li>打开控制面板 > 系统和安全 > 系统 > 高级系统设置。</li>
-            <li>在弹出窗口中选择“环境变量”。</li>
-            <li>在“系统变量”区域，点击“新建”。在“变量名”中输入 `ANDROID_HOME`，在“变量值”中输入SDK的路径（例如：`C:\Android`）。</li>
-            <li>在“系统变量”下找到名为 `Path` 的变量，选择它，然后点击“编辑”。</li>
-            <li>在“编辑环境变量”窗口，点击“新建”，然后添加 `%ANDROID_HOME%\platform-tools`。</li>
-            <li>点击“确定”保存所有设置。</li>
-        </ol>
-        <p>配置完成后，打开命令提示符，输入以下命令检查ADB是否配置成功：</p>
-        <pre>adb version</pre>
-        <p>如果正确显示版本信息，则表示配置成功[^9^]。</p>
-    </div>
-
-    <div class="step">
-        <h2>步骤 3：连接设备</h2>
-        <p>确保你的Android设备已连接到电脑，并且已启用开发者选项和USB调试。</p>
-        <p>检查设备是否连接成功：</p>
-        <pre>adb devices</pre>
-        <p>如果设备未显示，请检查USB连接或驱动程序。</p>
-    </div>
-
-    <div class="step">
-        <h2>步骤 4：启动Shizuku</h2>
-        <p>通过ADB启动Shizuku服务，运行以下命令：</p>
-        <pre>adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh</pre>
-        <p>如果使用PowerShell、Linux或Mac，命令为：</p>
-        <pre>./adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh</pre>
-        <p>如果遇到权限问题，可以尝试将Shizuku的脚本文件复制到 `/data/local/tmp` 目录下，并授予执行权限[^5^]。</p>
-        <button onclick="copyCommand()">一键复制命令</button>
-        <script>
-            function copyCommand() {
-                const command = document.querySelector('pre').innerText;
-                navigator.clipboard.writeText(command).then(() => {
-                    alert('命令已复制到剪贴板！');
-                });
-            }
-        </script>
-    </div>
-
-    <div class="step">
-        <h2>步骤 5：检查Shizuku是否启动成功</h2>
-        <p>启动后，你可以通过以下命令检查Shizuku服务是否正在运行：</p>
-        <pre>adb shell ps | grep shizuku</pre>
-        <p>如果看到Shizuku相关的进程，说明启动成功。</p>
-    </div>
-
-    <div class="step">
-        <h2>步骤 6：使用Shizuku</h2>
-        <p>启动Shizuku后，你可以在设备上打开Shizuku应用，或者通过ADB与Shizuku服务进行交互。</p>
-    </div>
-
-    <p>以上是使用ADB启动Shizuku的完整步骤。如果你遇到任何问题，请检查设备和ADB环境是否正确配置。</p>
 </body>
 </html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何使用ADB启动Shizuku</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .step {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 5px 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>如何使用ADB启动Shizuku</h1>
+    <p>以下是通过ADB启动Shizuku的详细步骤：</p>
+
+    <div class="step">
+        <h2>步骤 1：下载ADB工具</h2>
+        <p>根据你的操作系统，下载对应的ADB工具：</p>
+        <ul>
+            <li><a href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip">Windows版本</a></li>
+            <li><a href="https://dl.google.com/android/repository/platform-tools-latest-darwin.zip">Mac版本</a></li>
+            <li><a href="https://dl.google.com/android/repository/platform-tools-latest-linux.zip">Linux版本</a></li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h2>步骤 2：配置环境变量</h2>
+        <p>将ADB工具解压到一个目录，例如 `C:\Android\platform-tools`。</p>
+        <p>然后按照以下步骤配置环境变量：</p>
+        <ol>
+            <li>打开控制面板 > 系统和安全 > 系统 > 高级系统设置。</li>
+            <li>在弹出窗口中选择“环境变量”。</li>
+            <li>在“系统变量”区域，点击“新建”。在“变量名”中输入 `ANDROID_HOME`，在“变量值”中输入SDK的路径（例如：`C:\Android`）。</li>
+            <li>在“系统变量”下找到名为 `Path` 的变量，选择它，然后点击“编辑”。</li>
+            <li>在“编辑环境变量”窗口，点击“新建”，然后添加 `%ANDROID_HOME%\platform-tools`。</li>
+            <li>点击“确定”保存所有设置。</li>
+        </ol>
+        <p>配置完成后，打开命令提示符，输入以下命令检查ADB是否配置成功：</p>
+        <pre>adb version</pre>
+        <p>如果正确显示版本信息，则表示配置成功[^9^]。</p>
+    </div>
+
+    <div class="step">
+        <h2>步骤 3：连接设备</h2>
+        <p>确保你的Android设备已连接到电脑，并且已启用开发者选项和USB调试。</p>
+        <p>检查设备是否连接成功：</p>
+        <pre>adb devices</pre>
+        <p>如果设备未显示，请检查USB连接或驱动程序。</p>
+    </div>
+
+    <div class="step">
+        <h2>步骤 4：启动Shizuku</h2>
+        <p>通过ADB启动Shizuku服务，运行以下命令：</p>
+        <pre>adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh</pre>
+        <p>如果使用PowerShell、Linux或Mac，命令为：</p>
+        <pre>./adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh</pre>
+        <p>如果遇到权限问题，可以尝试将Shizuku的脚本文件复制到 `/data/local/tmp` 目录下，并授予执行权限[^5^]。</p>
+        <button onclick="copyCommand()">一键复制命令</button>
+        <script>
+            function copyCommand() {
+                const command = document.querySelector('pre').innerText;
+                navigator.clipboard.writeText(command).then(() => {
+                    alert('命令已复制到剪贴板！');
+                });
+            }
+        </script>
+    </div>
+
+    <div class="step">
+        <h2>步骤 5：检查Shizuku是否启动成功</h2>
+        <p>启动后，你可以通过以下命令检查Shizuku服务是否正在运行：</p>
+        <pre>adb shell ps | grep shizuku</pre>
+        <p>如果看到Shizuku相关的进程，说明启动成功。</p>
+    </div>
+
+    <div class="step">
+        <h2>步骤 6：使用Shizuku</h2>
+        <p>启动Shizuku后，你可以在设备上打开Shizuku应用，或者通过ADB与Shizuku服务进行交互。</p>
+    </div>
+
+    <p>以上是使用ADB启动Shizuku的完整步骤。如果你遇到任何问题，请检查设备和ADB环境是否正确配置。</p>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shizuku 激活方法</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 使用 Inter 字体 */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* 默认隐藏文章内容区域 (保留原有的隐藏样式) */
+        #post-content-area {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased flex items-center justify-center min-h-screen">
+
+    <div class="container mx-auto p-6 lg:px-8 max-w-md bg-white rounded-lg shadow-xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">Shizuku 激活方法</h1>
+            <p class="text-lg text-gray-600">请根据你的 Android 系统版本选择相应的激活方法。</p>
+        </header>
+
+        <main class="flex flex-col space-y-6">
+
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 hover:bg-blue-100 transition-colors duration-200">
+                <a href="https://xiaozhon114514.github.io/xz.github.io/wxshizuku.html" class="block text-blue-700 hover:text-blue-900">
+                    <h2 class="text-xl font-semibold mb-2">Android 11 ~ Android 14 (无线调试)</h2>
+                    <p class="text-gray-700">适用于支持无线调试的较新 Android 版本。</p>
+                </a>
+            </div>
+
+            <div class="bg-green-50 border border-green-200 rounded-lg p-6 hover:bg-green-100 transition-colors duration-200">
+                <a href="https://xiaozhon114514.github.io/xz.github.io/ adbshizuku.html" class="block text-green-700 hover:text-green-900">
+                    <h2 class="text-xl font-semibold mb-2">Android 10 及以下版本 (Android SDK ADB)</h2>
+                    <p class="text-gray-700">适用于需要使用传统 ADB 命令激活的旧版本。</p>
+                </a>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-8 text-gray-500 text-sm">
+            <p>选择适合你的方法开始激活 Shizuku。</p>
+        </footer>
+    </div>
+
+</body>
+</html>

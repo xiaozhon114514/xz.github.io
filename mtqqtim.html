@@ -4,102 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MT管理器访问QQ/TIM文件目录指南</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* 全局样式 */
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Noto Sans SC', 'Segoe UI', Arial, sans-serif; /* 使用思源黑体作为首选字体 */
+            line-height: 1.8; /* 增加行高 */
             color: #333;
             max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
+            margin: 20px auto; /* 顶部和底部增加外边距 */
+            padding: 0 20px; /* 左右内边距 */
+            background-color: #f8f9fa; /* 浅灰色背景 */
         }
         .container {
             background-color: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 12px; /* 增加圆角 */
+            padding: 30px; /* 增加内边距 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 更柔和的阴影 */
         }
         h1 {
-            color: #2c3e50;
+            color: #1a73e8; /* Google Blue */
             text-align: center;
             margin-bottom: 30px;
+            font-weight: 700; /* 加粗标题 */
+            font-size: 2em; /* 增加标题字号 */
         }
         h2 {
-            color: #3498db;
-            border-bottom: 1px solid #eee;
+            color: #34a853; /* Google Green */
+            border-bottom: 2px solid #e8f0fe; /* 浅蓝色底部边框 */
             padding-bottom: 10px;
             margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 500; /* 中等粗细 */
+            font-size: 1.5em; /* 增加副标题字号 */
         }
         .step {
-            background-color: #f8f9fa;
-            border-left: 4px solid #3498db;
-            padding: 15px;
+            background-color: #e8f0fe; /* 浅蓝色背景 */
+            border-left: 5px solid #4285f4; /* Google Blue 左侧边框 */
+            padding: 15px 20px; /* 调整内边距 */
             margin: 20px 0;
-            border-radius: 0 5px 5px 0;
+            border-radius: 8px; /* 圆角 */
+            display: flex; /* 使用 Flexbox 布局 */
+            align-items: center; /* 垂直居中 */
         }
         .step-number {
-            display: inline-block;
-            background-color: #3498db;
+            display: inline-flex; /* 使用 inline-flex */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            background-color: #4285f4; /* Google Blue */
             color: white;
-            width: 25px;
-            height: 25px;
+            width: 30px; /* 增加尺寸 */
+            height: 30px; /* 增加尺寸 */
             text-align: center;
-            border-radius: 50%;
-            margin-right: 10px;
+            border-radius: 50%; /* 圆形 */
+            margin-right: 15px; /* 增加右侧外边距 */
             font-weight: bold;
+            flex-shrink: 0; /* 防止数字被压缩 */
         }
         .note {
-            background-color: #fffde7;
-            border-left: 4px solid #ffd600;
-            padding: 15px;
+            background-color: #fff3e0; /* 浅橙色背景 */
+            border-left: 5px solid #f7c324; /* 橙色左侧边框 */
+            padding: 15px 20px;
             margin: 20px 0;
-            border-radius: 0 5px 5px 0;
+            border-radius: 8px;
+        }
+        .note strong {
+            color: #e98c00; /* 深橙色 */
         }
         .path {
-            font-family: monospace;
-            background-color: #f0f0f0;
-            padding: 2px 5px;
-            border-radius: 3px;
-            word-break: break-all;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; /* 等宽字体 */
+            background-color: #e9ecef; /* 浅灰色背景 */
+            padding: 5px 10px; /* 调整内边距 */
+            border-radius: 5px;
+            word-break: break-all; /* 路径过长时换行 */
+            display: block; /* 路径独占一行 */
+            margin: 10px 0;
+            color: #007bff; /* 蓝色 */
         }
         .btn {
             display: inline-block;
-            background-color: #3498db;
+            background-color: #4285f4; /* Google Blue */
             color: white;
-            padding: 10px 15px;
+            padding: 12px 25px; /* 增加内边距 */
             text-decoration: none;
-            border-radius: 5px;
-            margin: 10px 0;
+            border-radius: 25px; /* 大圆角按钮 */
+            margin: 20px 0; /* 增加外边距 */
             font-weight: bold;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* 添加过渡效果 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 阴影 */
         }
         .btn:hover {
-            background-color: #2980b9;
+            background-color: #3367d6; /* 鼠标悬停时颜色变深 */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* 阴影变大 */
         }
         .app-icon {
-            width: 24px;
-            height: 24px;
+            width: 28px; /* 增加图标尺寸 */
+            height: 28px; /* 增加图标尺寸 */
             vertical-align: middle;
-            margin-right: 5px;
+            margin-right: 8px; /* 增加右侧外边距 */
+        }
+        center {
+            text-align: center; /* 确保按钮居中 */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>MT管理器访问QQ/TIM文件目录指南</h1>
-        
+
         <div class="note">
             <p>由于Android系统限制，MT管理器无法直接访问<strong>/data</strong>目录。以下是两种解决方案：</p>
         </div>
-        
-        <h2><img src="https://img.icons8.com/color/48/000000/qq.png" class="app-icon">QQ文件目录</h2>
+
+        <h2><img src="https://img.icons8.com/color/48/000000/qq.png" class="app-icon" alt="QQ icon">QQ文件目录</h2>
         <p>QQ接收的文件默认存储在：</p>
         <p class="path">/storage/emulated/0/Android/data/com.tencent.mobileqq/Tencent/QQfile_recv</p>
-        
-        <h2><img src="https://img.icons8.com/color/48/000000/tim.png" class="app-icon">TIM文件目录</h2>
+
+        <h2><img src="https://img.icons8.com/color/48/000000/tim.png" class="app-icon" alt="TIM icon">TIM文件目录</h2>
         <p>TIM接收的文件默认存储在：</p>
         <p class="path">/storage/emulated/0/Android/data/com.tencent.tim/Tencent/TIMfile_recv</p>
-        
+
         <h2>解决方案一：使用MT管理器"添加存储"功能</h2>
         <div class="step">
             <span class="step-number">1</span> 打开MT管理器
@@ -116,7 +140,7 @@
         <div class="step">
             <span class="step-number">5</span> 导航到上述文件目录
         </div>
-        
+
         <h2>解决方案二：使用系统文件管理器</h2>
         <div class="step">
             <span class="step-number">1</span> 使用系统自带文件管理器
@@ -133,13 +157,13 @@
         <div class="step">
             <span class="step-number">5</span> 在MT管理器中访问复制后的文件
         </div>
-        
+
         <div class="note">
             <p><strong>注意：</strong>Android 11及以上版本对data目录访问有更严格限制，可能需要使用ADB命令授权访问权限。</p>
         </div>
-        
+
         <center>
-            <a href="https://www.coolapk.com/apk/bin.mt.plus" class="btn">下载MT管理器</a>
+            <a href="https://www.coolapk.com/apk/bin.mt.plus" class="btn" target="_blank">下载MT管理器</a>
         </center>
     </div>
 </body>
